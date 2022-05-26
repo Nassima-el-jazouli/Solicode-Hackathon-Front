@@ -1,0 +1,178 @@
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Elegant Modal Login Modal Form with Avatar Icon</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+
+  
+<section class="flat-title-page inner">
+  <div class="overlay"></div>
+  <div class="themesflat-container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-title-heading mg-bt-12">
+          <h1 class="heading text-center">Add Product</h1>
+        </div>
+        <div class="breadcrumbs style2">
+          <ul>
+            <li><a routerLink="">Home</a></li>
+            <li>Add Product</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tf-explore-2 tf-section">
+  <div class="themesflat-container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="tf-title-heading ct style-2 mg-bt-13">
+          Products
+        </h2>
+        <p class="sub-title ct small mg-bt-20 pad-420">Put your article in EcoCycle and get a score for it !                </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3"></div>
+
+      <div class="col-6">
+        <div class="sc-card-product" style="color:white">
+
+          <form (ngSubmit)="onSubmit()" #AnnounceForm="ngForm" id="myForm">
+
+            <div class="form-group">
+              <label >Name</label>
+              <input type="text" class="form-control"
+                     [(ngModel)]="announce.title"
+                     name="HouseTitle"
+                     placeholder="Enter your ProductTitle"
+                     required #HouseTitle="ngModel">
+            </div>
+
+            <div class="alert alert-danger" *ngIf="HouseTitle.touched && !HouseTitle.valid">
+              <div *ngIf="HouseTitle.errors?.['required']">Name is required.</div>
+            </div>
+
+
+            <div class="form-group">
+              <label >Category</label>
+              <input type="text" class="form-control"
+                     [(ngModel)]="announce.category"
+                     name="location"
+                     placeholder="Enter your number"
+                     required #location="ngModel">
+            </div>
+            <div class="alert alert-danger" *ngIf="location.touched && !location.valid">
+              <div *ngIf="location.errors?.['required']">Category is required.</div>
+            </div>
+
+
+            <div class="form-group">
+              <label >Quantity</label>
+              <input type="number" class="form-control"
+                     [(ngModel)]="announce.quantity"
+                     name="cost"
+                     placeholder="Enter the quantity"
+                     required #cost="ngModel">
+            </div>
+
+            <div class="alert alert-danger" *ngIf="cost.touched && !cost.valid">
+              <div *ngIf="cost.errors?.['required']">Quantity is required.</div>
+            </div>
+
+            <div class="form-group">
+              <label >Address</label>
+              <input minlength="32" maxlength="32"
+                     type="text" class="form-control"
+                     [(ngModel)]="announce.address"
+                     name="ownerAddress"
+                     placeholder="Enter your Address"
+                     required #ownerAddress="ngModel">
+            </div>
+
+            <div class="alert alert-danger" *ngIf="ownerAddress.touched && !ownerAddress.valid">
+              <div *ngIf="ownerAddress.errors?.['required']">Address is required.</div>
+              <div *ngIf="ownerAddress.errors?.['minlength']">Address is minimum {{ ownerAddress.errors?.['minlength'].requiredLength }} character.</div>
+              <div *ngIf="ownerAddress.errors?.['maxlength']">Address is maximum 10 character.</div>
+            </div>
+
+            <div class="form-group">
+              <label >Number Phone</label>
+              <textarea  class="form-control"
+                     [(ngModel)]="announce.numTel"
+                     name="description"
+                     cols="30" rows="10"
+                     placeholder="Enter your Product description"
+                     required #description="ngModel"></textarea>
+            </div>
+            <div *ngIf="cost.errors?.['required']">Quantity is required.</div>
+            <div class="alert alert-danger" *ngIf="description.touched && !description.valid">
+              <div *ngIf="description.errors?.['required']">Number Phone is required.</div>
+            </div>
+
+
+            <div class="form-group">
+              <label >Image</label>
+              <input type="file" class="form-control"
+                     [(ngModel)]="announce.image"
+                     name="image"
+                     placeholder="Enter your Product image"
+                     required #image="ngModel" id="image">
+            </div>
+            <div class="alert alert-danger" *ngIf="image.touched && !image.valid">
+              <div *ngIf="image.errors?.['required']">Image is required.</div>
+            </div>
+
+
+            <button type="submit"  [disabled]="!AnnounceForm.form.valid"
+                    form="myForm" style="margin-left:200px;color:white;"
+                    class="sc-button fl-button pri-3 mt-4 ">
+              Submit
+            </button>
+
+
+          </form>
+        </div>
+      </div>
+
+
+      <div class="col-3">
+        <div class="sc-card-product" style="color:white">
+
+            <a routerLink="/announces-list" class="sc-button fl-button pri-3 ">
+              <span>Your requests <i class="fab fa-searchengin"></i></span>
+            </a>
+            <a routerLink="/announces-list" class="sc-button fl-button pri-3 mt-4 " >
+              <span style="color:green">Your products <i class="fal fa-shield-check"></i></span>
+            </a>
+            
+            <a  class="sc-button fl-button pri-3 mt-4 " >
+              <span style="color:red">Your score is :  45 points  <i class="fal fa-shield-check"></i></span>
+              
+            </a>
+            <!-- <div class="popup" onclick="myFunction()">Click me!
+              <span class="popuptext" id="myPopup">Popup text...</span>
+            </div> -->
+            
+
+
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+
